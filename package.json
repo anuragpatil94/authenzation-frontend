@@ -4,18 +4,35 @@
   "private": true,
   "author": "Anurag Patil",
   "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "autoprefixer": "^9.8.6",
+    "postcss-cli": "^7.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "tailwindcss": "^1.7.5",
+    "twin.macro": "^1.7.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.1"
   },
   "scripts": {
+    "start": "npm-run-all --parallel watch:css react:start",
+    "build": "npm-run-all build:css build:react",
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.out.css",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/tailwind.out.css -w",
     "precommit": "lint-staged",
     "format": "prettier --write \"**/*.+(js|md|ts|css|sass|less|graphql|yml|yaml|scss|json|vue)\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "react:start": "react-scripts start",
+    "react:build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,9 +59,10 @@
   "bugs": {
     "url": "https://github.com/anuragpatil94/authentication-frontend/issues"
   },
-  "devDependencies": {
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.13",
-    "prettier": "^2.1.1"
+  "babelMacros": {
+    "twin": {
+      "preset": "emotion",
+      "config": "tailwind.config.js"
+    }
   }
 }
