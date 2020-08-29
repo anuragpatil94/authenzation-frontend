@@ -12,6 +12,8 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
+    "precommit": "lint-staged",
+    "format": "prettier --write \"**/*.+(js|md|ts|css|sass|less|graphql|yml|yaml|scss|json|vue)\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -39,5 +41,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/anuragpatil94/authentication-frontend/issues"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
+    "prettier": "^2.1.1"
   }
 }
