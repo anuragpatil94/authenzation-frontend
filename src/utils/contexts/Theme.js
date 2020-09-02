@@ -17,21 +17,4 @@ function ThemeProvider(props) {
   return <ThemeContext.Provider value={value} {...props} />;
 }
 
-function useTheme() {
-  const themeContext = useContext(ThemeContext);
-  if (!themeContext) {
-    throw new Error('useTheme cannot be used outside ThemeProvider');
-  }
-  const { theme, themeSettings } = themeContext;
-  return { theme, themeSettings: themeSettings.current };
-}
-
-function useChangeTheme() {
-  const themeContext = useContext(ThemeContext);
-  if (!themeContext) {
-    throw new Error('useTheme cannot be used outside ThemeProvider');
-  }
-  return themeContext;
-}
-
-export { ThemeProvider, ThemeContext, useTheme, useChangeTheme };
+export { ThemeProvider, ThemeContext };

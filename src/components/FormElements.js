@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from '@emotion/styled/macro';
-import { useTheme } from '../utils/contexts/Theme';
+import { useTheme } from '../utils/hooks';
 
 const StyledInput = styled.input(({ theme }) => ({
   width: '100%',
