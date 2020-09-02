@@ -1,35 +1,40 @@
 import React from 'react';
 import styled from '@emotion/styled/macro';
+import { useTheme } from '../utils/contexts/Theme';
 
-export { StyledButton as Button };
-
-const StyledButton = styled.button(
-  {
+const StyledButton = styled.button(({ variant, theme }) => {
+  const css = {
+    cursor: 'pointer',
     border: 'none',
-    color: 'white',
+    color: theme.textColorLight,
     display: 'block',
     margin: '8px 0',
     padding: '8px 16px',
-    borderRadius: '4px',
-  },
-  ({ variant }) => {
-    switch (variant) {
-      case '_secondary':
-        return {
-          backgroundColor: 'transparent ',
-          color: '#333',
-          borderBottom: '2px solid #979dac',
-          padding: '1px 8px',
-          '&:hover': {
-            color: '#0353a4',
-            borderBottom: '2px solid #0353a4',
-          },
-        };
-      case 'secondary':
-        return { backgroundColor: '#7d8597' };
-      case 'primary':
-      default:
-        return { backgroundColor: '#0466c8' };
-    }
-  },
-);
+  };
+  switch (variant) {
+    case '_secondary':
+      return {
+        ...css,
+        backgroundColor: 'transparent ',
+        color: theme.textColorDark,
+        borderBottom: `2px solid ${theme.secondary}`,
+        padding: '1px 8px',
+        '&:hover': {
+          color: theme.primaryHover,
+          borderBottom: `2px solid ${theme.primaryHover}`,
+        },
+      };
+    case 'secondary':
+      return { ...css, borderRadius: '4px', backgroundColor: theme.secondary };
+    case 'primary':
+    default:
+      return { ...css, borderRadius: '4px', backgroundColor: theme.primary };
+  }
+});
+
+function Button(props) {
+  const { themeSettings } = useTheme();
+  return <StyledButton theme={themeSettings} {...props} />;
+}
+
+export { Button };
