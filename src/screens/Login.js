@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginContainer from '../containers/Login';
+import useAuth from '../utils/hooks/useAuth';
 
 export default Login;
 
@@ -8,12 +9,15 @@ export default Login;
  * LoginContainer
  */
 function Login() {
-  function onSubmit({ username, password }) {
-    console.log(username, password);
+  const auth = useAuth();
+  function onSubmit(formData) {
+    auth.login(formData);
   }
   return (
     <div>
-      <LoginContainer onSubmit={onSubmit} />
+      <div>
+        <LoginContainer onSubmit={onSubmit} />
+      </div>
     </div>
   );
 }

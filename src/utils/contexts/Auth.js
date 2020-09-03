@@ -7,11 +7,6 @@ AuthContext.displayName = 'AuthContext';
 function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    console.log('Running Effect');
-    console.log(user);
-  }, [user, setUser]);
-
   // Auth Functions
   const login = useCallback(form => setUser(auth.login(form)), [setUser]);
   const register = useCallback(form => setUser(auth.register(form)), [setUser]);
@@ -29,8 +24,6 @@ function AuthProvider(props) {
     }),
     [user, login, logout, register],
   );
-
-  console.log(value);
 
   return <AuthContext.Provider value={value} {...props} />;
 }
