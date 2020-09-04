@@ -1,9 +1,13 @@
 import React from 'react';
-import useAuth from '../utils/hooks/useAuth';
+import Dashboard from './Dashboard';
+import { Switch, Route } from 'react-router';
 
 function AuthorizedApp() {
-  const { user } = useAuth();
-  return <div>{user.name} is Authorized</div>;
+  return (
+    <Switch>
+      <Route exact path="/" component={Dashboard} />
+    </Switch>
+  );
 }
 
 export default AuthorizedApp;

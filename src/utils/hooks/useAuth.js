@@ -1,8 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../contexts';
 
-export default useAuth;
-
 function useAuth() {
   // Get User, Status, Error
   const authContext = useContext(AuthContext);
@@ -13,3 +11,5 @@ function useAuth() {
 
   return authContext;
 }
+
+export default useAuth;
