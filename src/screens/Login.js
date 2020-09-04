@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginContainer from '../containers/Login';
-import useAuth from '../utils/hooks/useAuth';
+import { useAuth } from '../utils/hooks';
 
 export default Login;
 

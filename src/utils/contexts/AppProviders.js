@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactQueryConfigProvider } from 'react-query';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from './Theme';
 import { AuthProvider } from './Auth';
 
@@ -26,9 +27,11 @@ const queryConfig = {
 function AppProviders({ children }) {
   return (
     <ReactQueryConfigProvider config={queryConfig}>
-      <AuthProvider>
-        <ThemeProvider>{children}</ThemeProvider>
-      </AuthProvider>
+      <Router>
+        <AuthProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </AuthProvider>
+      </Router>
     </ReactQueryConfigProvider>
   );
 }

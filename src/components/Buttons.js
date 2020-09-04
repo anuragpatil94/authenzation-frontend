@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled/macro';
 import { useTheme } from '../utils/hooks';
+import { Link } from 'react-router-dom';
 
 const StyledButton = styled.button(({ variant, theme }) => {
   const css = {
@@ -37,4 +38,13 @@ function Button(props) {
   return <StyledButton theme={themeSettings} {...props} />;
 }
 
-export { Button };
+function LinkButton({ to, ...props }) {
+  const { themeSettings } = useTheme();
+  return (
+    <Link to={to}>
+      <StyledButton theme={themeSettings} {...props} />
+    </Link>
+  );
+}
+
+export { Button, LinkButton };
