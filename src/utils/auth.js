@@ -3,15 +3,15 @@ const testUser = {
   name: 'Anurag',
 };
 
-const login = ({ username, password }) => {
+const login = formData => {
   // Check in database
-  console.log('You just Logged In');
+  console.log(`User: ${formData.Username} is logged in`);
   return testUser;
 };
 
-const register = ({ username, password }) => {
+const register = formData => {
   // create new user in database
-  console.log('You just Registered');
+  console.log(`User: ${formData.Username} you just registered`);
   return testUser;
 };
 
