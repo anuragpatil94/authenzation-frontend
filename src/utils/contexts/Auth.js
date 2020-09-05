@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import auth from '../auth';
+import { CONTEXT_DISPLAY_NAMES } from '../../constants';
 
 const AuthContext = React.createContext();
-AuthContext.displayName = 'AuthContext';
+AuthContext.displayName = CONTEXT_DISPLAY_NAMES.authContext;
 
 function AuthProvider(props) {
   const [user, setUser] = useState(null);

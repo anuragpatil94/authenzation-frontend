@@ -3,4 +3,10 @@ const THEMES = {
   dark: 'dark',
   blue: 'blue',
 };
-export { THEMES };
+
+const CONTEXT_DISPLAY_NAMES = {
+  themeContext: 'ThemeContext',
+  authContext: 'AuthContext',
+};
+
+export { THEMES, CONTEXT_DISPLAY_NAMES };

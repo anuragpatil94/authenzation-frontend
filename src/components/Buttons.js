@@ -1,4 +1,8 @@
 import React from 'react';
+
+/* @jsx jsx */
+// eslint-disable-next-line
+import { jsx } from '@emotion/core';
 import styled from '@emotion/styled/macro';
 import { useTheme } from '../utils/hooks';
 import { Link } from 'react-router-dom';
@@ -41,7 +45,7 @@ function Button(props) {
 function LinkButton({ to, ...props }) {
   const { themeSettings } = useTheme();
   return (
-    <Link to={to}>
+    <Link css={{ textDecoration: 'none' }} to={to}>
       <StyledButton theme={themeSettings} {...props} />
     </Link>
   );
