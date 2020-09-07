@@ -1,15 +1,24 @@
 import React, { useState, useCallback } from 'react';
 import auth from '../auth';
+import { useHistory } from 'react-router';
 
 const AuthContext = React.createContext();
 AuthContext.displayName = 'AuthContext';
 
 function AuthProvider(props) {
   const [user, setUser] = useState(null);
+  const history = useHistory();
 
   // Auth Functions
-  const login = useCallback(form => setUser(auth.login(form)), [setUser]);
-  const register = useCallback(form => setUser(auth.register(form)), [setUser]);
+  const login = useCallback(form => auth.login(form).then(() => {}), [setUser]);
+  const register = useCallback(
+    form =>
+      auth.register(form).then(({ id, Username, FirstName, LastName }) => {
+        setUser({ id, username: Username, name: `${FirstName} ${LastName}` });
+        history.push('/');
+      }),
+    [setUser],
+  );
   const logout = useCallback(() => {
     auth.logout();
     setUser(null);
