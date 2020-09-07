@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { THEMES } from '../../constants';
+import { THEMES, CONTEXT_DISPLAY_NAMES } from '../../constants';
 import ThemeConfig from '../themes';
 
 const ThemeContext = React.createContext();
-ThemeContext.displayName = 'ThemeContext';
+ThemeContext.displayName = CONTEXT_DISPLAY_NAMES.themeContext;
 
 function ThemeProvider(props) {
   const [theme, setTheme] = useState(THEMES.light);
