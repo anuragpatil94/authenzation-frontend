@@ -47,6 +47,7 @@ function Register({ onSubmit }) {
           autoComplete="off"
         ></Input>
         <Input
+          type="password"
           name="Password"
           placeholder="Password"
           autoComplete="off"
