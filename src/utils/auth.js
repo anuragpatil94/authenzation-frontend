@@ -1,9 +1,8 @@
 import axios from 'axios';
-import config from '../config';
 
 const login = async ({ Username, Password }) => {
   // Check in database
-  const res = await axios.post(`${config.dataAPI.url}/auth/signin`, {
+  const res = await axios.post(`http://localhost:4000/api/auth/signin`, {
     Username,
     Password,
   });
@@ -20,7 +19,7 @@ const login = async ({ Username, Password }) => {
 const register = async ({ FirstName, LastName, Username, Password }) => {
   // create new user in database
   // I think react query can be used here
-  const res = await axios.post(`${config.dataAPI.url}/auth/signup`, {
+  const res = await axios.post(`http://localhost:4000/api/auth/signup`, {
     FirstName,
     LastName,
     Username,
