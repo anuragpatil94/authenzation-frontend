@@ -1,31 +1,38 @@
 import axios from 'axios';
-import moment from 'moment';
+import config from '../config';
 
-const testUser = {
-  id: 1,
-  name: 'Anurag',
-};
-
-const login = async formData => {
+const login = async ({ Username, Password }) => {
   // Check in database
-  console.log(`User: ${formData.Username} is logged in`);
-  return testUser;
+  const res = await axios.post(`${config.dataAPI.url}/auth/signin`, {
+    Username,
+    Password,
+  });
+
+  console.log(`User: ${Username} you just logged in`);
+
+  const { success, data } = res.data;
+
+  return new Promise(
+    (resolve, reject) => res.status === 200 && resolve({ success, data }),
+  );
 };
 
-const register = async formData => {
+const register = async ({ FirstName, LastName, Username, Password }) => {
   // create new user in database
   // I think react query can be used here
-  console.log(`User: ${formData.Username} you just registered`);
-
-  const res = await axios.post('http://localhost:3010/users', {
-    FirstName: formData.FirstName,
-    LastName: formData.LastName,
-    Username: formData.Username,
-    Password: formData.Password,
-    CreatedAt: moment().format('MMMM Do YYYY, HH:mm:ss'),
+  const res = await axios.post(`${config.dataAPI.url}/auth/signup`, {
+    FirstName,
+    LastName,
+    Username,
+    Password,
   });
+
+  console.log(`User: ${Username} you just registered`);
+
+  const { success } = res.data;
+
   return new Promise(
-    (resolve, reject) => res.status == 201 && resolve(res.data),
+    (resolve, reject) => res.status === 200 && resolve({ success }),
   );
 };
 
