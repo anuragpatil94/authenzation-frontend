@@ -9,8 +9,8 @@ function LoginForm({ onSubmit }) {
     const { username, password } = event.target.elements;
 
     onSubmit({
-      username: username.value,
-      password: password.value,
+      Username: username.value,
+      Password: password.value,
     });
   };
 
