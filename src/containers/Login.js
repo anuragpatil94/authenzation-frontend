@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled/macro';
 import LoginForm from './LoginForm';
+import AuthSelectorForm from './AuthSelectorForm';
 
 export default LoginContainer;
 
@@ -13,12 +14,13 @@ const StyledLoginContainer = styled.div({
   borderRadius: '4px',
 });
 
-function LoginContainer({ onSubmit }) {
+function LoginContainer({ onSubmit, authSelector }) {
   return (
     <StyledLoginContainer className="login-container">
       <div style={{ paddingTop: '16px', paddingBottom: '16px' }}>
         <span>Auth Method Selector</span>
       </div>
+      <AuthSelectorForm authSelector={authSelector} />
       <LoginForm onSubmit={onSubmit} />
     </StyledLoginContainer>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginContainer from '../containers/Login';
-import { useAuth } from '../utils/hooks';
+import { useAuth, useAuthSelector } from '../utils/hooks';
 
 export default Login;
 
@@ -10,13 +10,18 @@ export default Login;
  */
 function Login() {
   const auth = useAuth();
+  const [authType, setAuthType] = useAuthSelector();
+
   function onSubmit(formData) {
-    auth.login(formData);
+    auth.login({ authType, ...formData });
   }
   return (
     <div>
       <div>
-        <LoginContainer onSubmit={onSubmit} />
+        <LoginContainer
+          authSelector={{ authType, setAuthType }}
+          onSubmit={onSubmit}
+        />
       </div>
     </div>
   );
