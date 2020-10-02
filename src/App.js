@@ -10,6 +10,6 @@ export default App;
 
 // Entry Point to the Application
 function App() {
-  const { user } = useAuth();
-  return user ? <AuthorizedApp /> : <UnauthorizedApp />;
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <AuthorizedApp /> : <UnauthorizedApp />;
 }

@@ -1,13 +1,23 @@
 import axios from 'axios';
 
-const login = async ({ Username, Password }) => {
+const login = async ({ authType, Username, Password }) => {
   // Check in database
-  const res = await axios.post(`http://localhost:4000/api/auth/signin`, {
-    Username,
-    Password,
-  });
+  const res = await axios.post(
+    `http://localhost:4000/api/auth/signin`,
+    {
+      Username,
+      Password,
+    },
+    {
+      headers: {
+        authtype: authType,
+      },
+    },
+  );
 
-  console.log(`User: ${Username} you just logged in`);
+  console.log(
+    `User: ${Username} you just logged in using ${authType} Atuhentication`,
+  );
 
   const { success, data } = res.data;
 
