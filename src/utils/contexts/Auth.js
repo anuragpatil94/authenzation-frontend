@@ -52,7 +52,17 @@ function AuthProvider(props) {
     [history],
   );
   const logout = useCallback(() => {
-    auth.logout();
+    // let data = { authType };
+    // if (authType === 'JWT') {
+    //   data = { ...data, accessToken };
+    // }
+    // auth.logout(data).then(({ success }) => {
+    //   if (success) {
+
+    //   }
+    // });
+
+    // TODO: add remove method in useLocalStorage
     setUser(null);
     setAccessToken('');
     setRefreshToken('');
