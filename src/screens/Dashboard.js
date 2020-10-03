@@ -7,7 +7,7 @@ function Dashboard() {
   return (
     <div>
       <h1>Dashboard</h1>
-      <span>Welcome, {user.FirstName}</span>
+      <span>Welcome, {user?.FirstName}</span>
     </div>
   );
 }

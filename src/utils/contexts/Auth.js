@@ -10,10 +10,12 @@ AuthContext.displayName = CONTEXT_DISPLAY_NAMES.authContext;
 
 function AuthProvider(props) {
   const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [, setAccessToken] = useLocalStorage('accessToken', '');
+  const [accessToken, setAccessToken] = useLocalStorage('accessToken', '');
   const [, setRefreshToken] = useLocalStorage('refreshToken', '');
   const [, setAuthType] = useLocalStorage('authType', 'basic');
+  const [isAuthenticated, setIsAuthenticated] = useState(() =>
+    accessToken ? true : false,
+  );
   const history = useHistory();
 
   // Auth Functions
