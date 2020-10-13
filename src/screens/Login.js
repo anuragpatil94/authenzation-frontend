@@ -16,13 +16,9 @@ function Login() {
     auth.login({ authType, ...formData });
   }
   return (
-    <div>
-      <div>
-        <LoginContainer
-          authSelector={{ authType, setAuthType }}
-          onSubmit={onSubmit}
-        />
-      </div>
-    </div>
+    <LoginContainer
+      authSelector={{ authType, setAuthType }}
+      onSubmit={onSubmit}
+    />
   );
 }

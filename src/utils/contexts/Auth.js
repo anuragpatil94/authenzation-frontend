@@ -51,8 +51,28 @@ function AuthProvider(props) {
         .catch(err => console.log(err)),
     [history],
   );
+  const forgotPassword = useCallback(
+    formData =>
+      auth
+        .forgotPassword(formData)
+        .then(({ success, data }) => {
+          console.log(success, data);
+        })
+        .catch(err => console.error(err)),
+    [],
+  );
   const logout = useCallback(() => {
-    auth.logout();
+    // let data = { authType };
+    // if (authType === 'JWT') {
+    //   data = { ...data, accessToken };
+    // }
+    // auth.logout(data).then(({ success }) => {
+    //   if (success) {
+
+    //   }
+    // });
+
+    // TODO: add remove method in useLocalStorage
     setUser(null);
     setAccessToken('');
     setRefreshToken('');
@@ -66,8 +86,9 @@ function AuthProvider(props) {
       login,
       logout,
       register,
+      forgotPassword,
     }),
-    [user, login, logout, register, isAuthenticated],
+    [user, login, logout, register, forgotPassword, isAuthenticated],
   );
 
   return <AuthContext.Provider value={value} {...props} />;

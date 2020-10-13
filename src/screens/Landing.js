@@ -10,6 +10,9 @@ function LandingScreen() {
         <LinkButton to={`/register`} variant="secondary">
           Register
         </LinkButton>
+        <LinkButton to={`/forget-password`} variant="_secondary">
+          Forget Password
+        </LinkButton>
       </div>
     </div>
   );
